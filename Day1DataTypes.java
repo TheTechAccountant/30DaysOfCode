@@ -4,7 +4,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Day1DataTypes {
+public class Solution {
 	
     public static void main(String[] args) {
         int i = 4;
@@ -14,9 +14,12 @@ public class Day1DataTypes {
         Scanner scan = new Scanner(System.in);
 
         /* Declare second integer, double, and String variables. */
-        int inputInteger = 12;
-        double inputDouble = 4.00;
-        String inputString = "is the best place to learn and practice coding!";
+              /* Read and save an integer, double, and String to your variables.*/
+        // Note: If you have trouble reading the entire String, please go back and review the Tutorial closely.
+        int inputInteger = scan.nextInt();
+        double inputDouble = scan.nextDouble();
+        String inputString = scan.nextLine();
+
         /* Print the sum of both integer variables on a new line. */
         System.out.println(i + inputInteger);
         /* Print the sum of the double variables on a new line. */
