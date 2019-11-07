@@ -8,8 +8,7 @@ public class Day6LetsReview {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
     	
        	Scanner in = new Scanner(System.in);
-    	
-    	String s = "";
+    	String myString = "";
     	String evenString = "";
     	String oddString = "";
     	int t;
@@ -21,34 +20,31 @@ public class Day6LetsReview {
     	// Run a loop for test cases
     	for(int i=0; i<t;i++) {
     		System.out.println("Please enter the String you want to evaluate: ");
-    		s = in.next();
-    		s.toCharArray();
-    		// System.out.println(s);
-    		System.out.print(s);
+    		myString = in.next();
+    		System.out.println("String inputted: " + myString);
     		
+    		// Convert to component characters
+    		char[] myCharArray = myString.toCharArray();
     		
-    		
-    		// Run loop to split test case string into even and odd
-    		for (int j=0; j<s.length(); j++) {
-    			char currentCharacter = s.charAt(j);
-    			
-    			if (j%2==0) {
-    				evenString= "" + currentCharacter;
-    			} else {
-    				oddString = "" + currentCharacter;
-    			}
-    	    	System.out.print(evenString);
-    	    	
+    		// Run loop to split test case string into even 
+    		for (int j=0; j<myString.length(); j++) {
+    			if (j%2 == 0) {
+    	    	System.out.print(myCharArray[j]);
+    			} 
     		}
+    		System.out.print(" ");
+    		
+    		// Run loop to split test case string into odd 
+    		for (int j=0; j<myString.length(); j++) {
+    			if (j%2 != 0) {
+    	    	System.out.print(myCharArray[j]);
+    			} 
+    		}
+    		
+    		System.out.println("");
+    		
     	}
-    	
-
-
- 
-    	s = "s";
-    	s = s + "t";
-    	System.out.print(s);
-  
+    	in.close();
     }
 }
 
