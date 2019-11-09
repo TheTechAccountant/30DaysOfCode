@@ -55,7 +55,7 @@ public class MadLibs {
 	}
 	
 	// Setters
-	public void setString(String newStory) {
+	public void setStory(String newStory) {
 		this.story = newStory;
 	}
 
@@ -88,38 +88,104 @@ public class MadLibs {
 	}
 	
 	public void setRandomNums() {
-		
+		int num = Math.abs(rand.nextInt()) % 100;
+		int index = 0;
+		int [] numberHolder = new int[3];
+		while (index < numberHolder.length) {
+			numberHolder[index] = num + index;
+			index++;
+		}
+		randomNums ="not " + numberHolder[0] + " not " + numberHolder[1] + " ,but " + numberHolder[2];
 	}
-		
+	
+	// Print Instructions for Player
 	public void printInstructions() {
 		System.out.println("Welcome to the MadLibs game. If you type in words, "
 				+ "We will give you a story. Start by typing in a name.");
 	}
 	
+	
+	// Get Data
 	public void enterName() {
 		setName(scanner.nextLine());
 	}
 	
 	public void enterNoun1() {
-	
+		System.out.println("Give me a noun: ");
+		setNoun1(scanner.nextLine());
 	}
 	
+	public void enterNoun2() {
+		System.out.println("Give me another noun: ");
+		setNoun2(scanner.nextLine());
+	}
+	
+	public void enterNoun3() {
+		System.out.println("Give me the last noun: ");
+		setNoun3(scanner.nextLine());
+	}
+	
+	public void enterAdjective1() {
+		System.out.println("Please enter an adjective: ");
+		setAdjective1(scanner.nextLine());
+	}
+	
+	public void enterAdjective2() {
+		System.out.println("Please enter second adjective: ");
+		setAdjective2(scanner.nextLine());
+	}
+	
+	public void enterAdverb() {
+		System.out.println("Please enter an adverb: ");
+		setAdverb(scanner.nextLine());
+	}
+	
+	
+	
 	public void putTogetherTheStory() {
-		String story = "Jesse and her best friend " + getName() + " went to Disney World Today!"
-				+ "The saw a " + getNoun1() + " in a show at the Magic Kingdom"
-				+ "and ate a " + getAdjective1() + " feast for dinner. The next "
-				+ "day I ran " + getAdverb() + " to meet Mickey Mouse"
-				+ " in his " + getNoun2() + " and then that night "
-				+ "I gazed at the " + getRandomNums() + " "
-				+ getAdjective2() + "fireworks shooting from the " 
-				+ getNoun3() + ".";
+		String story;
+		int num = Math.abs(rand.nextInt() % 2);
+		if (num==0) {
+			story = "Jesse and her best friend " + getName() + " went to Disney World Today! "
+					+ "The saw a " + getNoun1() + " in a show at the Magic Kingdom "
+					+ "and ate a " + getAdjective1() + " feast for dinner. The next "
+					+ "day I ran " + getAdverb() + " to meet Mickey Mouse"
+					+ " in his " + getNoun2() + " and then that night "
+					+ "I gazed at the " + getRandomNums() + " "
+					+ getAdjective2() + "fireworks shooting from the " 
+					+ getNoun3() + ".";
+		} else {
+			story =  "Mark and " + getName() + " travelled to the garage where they found a "
+					+ getNoun1() + " in the back corner underneath a" + getAdjective1() + " "
+					+ getNoun2() + ". We picked it up and ran " +getAdverb() + " to inform "
+					+ "Niall what we had found." + "We compared the " + getNoun2() + " with the " 
+					+ getNoun3() + "and found out they had " + getRandomNums() + getAdjective2() 
+					+ " features in common.";
+					 
+		}
 		setStory(story);
+	}
+	
+	public void play() {
+		enterName();
+		enterNoun1();
+		enterAdjective1();
+		enterAdjective2();
+		enterNoun2();
+		enterAdverb();
+		enterNoun3();
+		setRandomNums();
+		putTogetherTheStory();
+		System.out.println(getStory());
+		
 	}
 		
 	public static void main(String[] args) {
 		
 		MadLibs game = new MadLibs();
 		game.printInstructions();
+		game.play();
+		
 		
 		
 	}
