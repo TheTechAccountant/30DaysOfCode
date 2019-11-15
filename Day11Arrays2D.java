@@ -18,8 +18,6 @@ public class Day11Arrays2D {
     
     public static void main(String[] args) {
         int[][] arr = new int[6][6];
-        int rowLength = arr.length;
-        int colLength = arr[0].length;
  
         // Assign all inputs from the Scanner to a 6*6 Array.
         for (int i = 0; i < 6; i++) {
@@ -29,24 +27,18 @@ public class Day11Arrays2D {
                 int arrItem = Integer.parseInt(arrRowItems[j]);
                 arr[i][j] = arrItem; 
                 }  
-            }     
-        int sum = 0;
-        int max = 0;
+            }  
         
-        for (int i = 0; i < 6;i++) {
-        	for(int j=0; j<6; j++) {
-                if ((i>1 && i<5) && (j>1 && j<5)) {
-                	int topOfHourGlass = arr[i-1][j-1] + arr[i-1][j] + arr[i-1][j+1];
-                	int bottomOfHourGlass = arr[i+1][j-1] + arr[i+1][j] + arr[i+1][j+1];
-                	sum = arr[i][j] + topOfHourGlass + bottomOfHourGlass;
-                	System.out.println(sum);
-                	if (sum>max) {
-                		max = sum;
-                	}
-                } 
-        	}
+        int max = -9 * 7;
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (j + 2 < 6 && i + 2 < 6) {
+                    int sum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2];
+                    if (sum > max) max = sum;
+                }
+            }
         }
-        System.out.print(max);
+
    
         
         scanner.close();
